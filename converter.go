@@ -14,7 +14,7 @@ type exchange_rate struct {
 	Code     string `json:"code"`
 	Rates    []struct {
 		No            string  `json:"no"`
-		EffectiveDate string  `json:"effectiveDate`
+		EffectiveDate string  `json:"effectiveDate"`
 		Mid           float32 `json:"mid"`
 	} `json:"rates"`
 }
