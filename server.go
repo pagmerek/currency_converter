@@ -14,8 +14,7 @@ func init() {
 
 func main() {
 	http.HandleFunc("/index", index)
-	http.HandleFunc("/handleJs", handleJs)
-
+	http.HandleFunc("/js/inputFieldChange.js", handleJs)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 func handleJs(w http.ResponseWriter, r *http.Request) {
