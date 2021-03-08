@@ -12,26 +12,26 @@
         <div class="jumbotron">
             <div>
                 <h1>Currency Converter</h1>
-                    <label for="1">You send</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="0.00" name="first" id="2" aria-label="0.00"
-                            aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">GBP</span>
-                        </div>
+                <label for="1">You send</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="0.00" name="first" id="first_form"
+                        aria-label="0.00" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">GBP</span>
                     </div>
-                    <label for="2">They recieve</label>
-                    <div class="input-group mb-3">
+                </div>
+                <label for="2">They recieve</label>
+                <div class="input-group mb-3">
 
-                        <input type="text" class="form-control" placeholder="0.00" name="second" id="2"
-                            aria-label="0.00" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">PLN</span>
-                        </div>
+                    <input type="text" class="form-control" placeholder="0.00" name="second" id="second_form"
+                        aria-label="0.00" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2">PLN</span>
                     </div>
-                    <input type="submit">
-                </form>
+                </div>
+                <div> 1 <b>GBP</b> = <i id="rate"> {{.Value}} </i> PLN </div>
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="./js/inputFieldChange.js"></script>
 </body>

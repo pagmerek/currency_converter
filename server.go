@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -14,22 +13,19 @@ func init() {
 }
 
 func main() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/process", convert)
+	http.HandleFunc("/index", index)
+	http.HandleFunc("/handleJs", handleJs)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
-
-func index(w http.ResponseWriter, r *http.Request) {
-	tpl.ExecuteTemplate(w, "index.gohtml", nil)
+func handleJs(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "js/inputFieldChange.js")
 }
-
-func convert(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+func index(w http.ResponseWriter, r *http.Request) {
+	rate := struct {
+		Value float32
+	}{
+		Value: getExchangeRate("gbp"),
 	}
-	fvalue := r.FormValue("first")
-	svalue := r.FormValue("second")
-	fmt.Printf("First val %s, second val %s", fvalue, svalue)
-
+	tpl.ExecuteTemplate(w, "index.gohtml", rate)
 }
