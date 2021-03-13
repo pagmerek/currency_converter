@@ -13,12 +13,14 @@
             <div>
                 <h1>Currency Converter</h1>
                 <label for="1">You send</label>
+                <div class="form-group"> 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="0.00" name="first" id="first_form"
                         aria-label="0.00" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">GBP</span>
                     </div>
+                </div>
                 </div>
                 <label for="2">They recieve</label>
                 <div class="input-group mb-3">
@@ -29,7 +31,11 @@
                         <span class="input-group-text" id="basic-addon2">PLN</span>
                     </div>
                 </div>
-                <div> 1 <b>GBP</b> = <i id="rate"> {{.Value}} </i> PLN </div>
+                {{if .Success}}
+                    <div> 1 <b>GBP</b> = <i id="rate"> {{.Value}} </i> PLN </div>
+                {{else}}
+                    <div> There was an error with loading <i id="rate">NBP</i> data, please try again later</div>    
+                {{end}}
             </div>
         </div>
     </div>

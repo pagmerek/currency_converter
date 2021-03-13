@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"time"
 )
@@ -28,23 +27,23 @@ func getExchangeRate(currency_id string) float32 {
 	request.Header.Set("User-Agent", "currency_converter")
 
 	if err != nil {
-		log.Fatal(err)
+		return -1
 	}
 	response, err := convertClient.Do(request)
 	if err != nil {
-		log.Fatal(err)
+		return -1
 	}
 	if response.Body != nil {
 		defer response.Body.Close()
 	}
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		log.Fatal(err)
+		return -1
 	}
 	result := exchange_rate{}
 	err = json.Unmarshal(body, &result)
 	if err != nil {
-		log.Fatal(err)
+		return -1
 	}
 	return result.Rates[0].Mid
 }
