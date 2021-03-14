@@ -30,11 +30,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 		Value:   getExchangeRate("gbp"),
 		Success: true,
 	}
-	fmt.Println(rate.Success, rate.Value)
-
-	if rate.Value < 0 {
+	if rate.Value <= 0 {
 		rate.Success = false
 	}
-	fmt.Println(rate.Success)
 	tpl.ExecuteTemplate(w, "index.gohtml", rate)
 }
